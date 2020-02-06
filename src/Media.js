@@ -1,11 +1,8 @@
 var moment = require('moment');
 
 function Media() {
-  if (!this.labelWidth) {
-    throw new Error('Must implement method "labelWidth"');
-  }
-  if (!this.labelHeight) {
-    throw new Error('Must implement method "labelWidth"');
+  if (!this.labelWidth || !this.labelHeight) {
+    throw new Error('Must implement methods "labelWidth" and "labeHeight');
   }
 
   this.makeLabel = function (title, recorder, recordingDate, startAtMinutes, startAtSeconds, durationMinutes, durationSeconds) {};

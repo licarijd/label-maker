@@ -1,19 +1,19 @@
 var moment = require('moment');
 var Media = require('./Media');
 var VideoTapeSize = require('./VideoTapeSize');
+var { SECONDS_IN_A_MINUTE } = require('../src/constants')
 
 function VideoTape(size) {
-  console.log(VideoTapeSize[size].width)
   this.labelHeight = VideoTapeSize[size].height
   this.labelWidth = VideoTapeSize[size].width
-
+ 
   Media.call(this);
 
   function formatTime(minutes, seconds) {
     var result = '';
-    if (minutes >= 60) {
-      result = Math.floor(minutes / 60) + ':';
-      minutes %= 60;
+    if (minutes >= SECONDS_IN_A_MINUTE) {
+      result = Math.floor(minutes / SECONDS_IN_A_MINUTE) + ':';
+      minutes %= SECONDS_IN_A_MINUTE;
     }
     result += (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     return result;

@@ -1,0 +1,7 @@
+const SECONDS_IN_A_MINUTE = 60
+const TITLE_FIT_LENGTH = 15
+
+module.exports = {
+    SECONDS_IN_A_MINUTE,
+    TITLE_FIT_LENGTH
+}
