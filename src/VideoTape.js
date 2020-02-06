@@ -3,13 +3,9 @@ var Media = require('./Media');
 var VideoTapeSize = require('./VideoTapeSize');
 
 function VideoTape(size) {
-  this.labelHeight = function () {
-    return this.size === VideoTapeSize.HOME ? 2 : 4;
-  };
-
-  this.labelWidth = function () {
-    return this.size === VideoTapeSize.BROADCAST ? 20 : 40;
-  };
+  console.log(VideoTapeSize[size].width)
+  this.labelHeight = VideoTapeSize[size].height
+  this.labelWidth = VideoTapeSize[size].width
 
   Media.call(this);
 
@@ -37,12 +33,12 @@ function VideoTape(size) {
 
   this.makeLabel = function (title, recorder, recordingDate, startAtMinutes, startAtSeconds, durationMinutes, durationSeconds) {
     var label;
-    if (size === VideoTapeSize.HOME) {
+    if (size === VideoTapeSize.HOME.name) {
       label = new Array(2);
       label[0] = this.fitTitleTo(title, 9) + ' ' + this.dateInTenDigitFormat(recordingDate);
       // hidden bug here: if values are way too large the label will be wider than 20
       label[1] = 'S:' + formatTime(startAtMinutes, startAtSeconds) + ' D:' + formatTime(durationMinutes, durationSeconds);
-    } else if (size === VideoTapeSize.BROADCAST) {
+    } else if (size === VideoTapeSize.BROADCAST.name) {
       label = [
         this.fitTitleTo(title, 40),
         'Recorded by: ' + fitRecorderTo(recorder, 40 - 'Recorded by: '.length),

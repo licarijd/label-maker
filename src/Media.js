@@ -1,10 +1,10 @@
 var moment = require('moment');
 
 function Media() {
-  if (typeof this.labelWidth !== 'function') {
+  if (!this.labelWidth) {
     throw new Error('Must implement method "labelWidth"');
   }
-  if (typeof this.labelHeight !== 'function') {
+  if (!this.labelHeight) {
     throw new Error('Must implement method "labelWidth"');
   }
 
