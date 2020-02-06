@@ -1,0 +1,17 @@
+{
+  "name": "Lab-LabelMaker-Problem-JS",
+  "version": "1.0.0",
+  "description": "3P Vantage Agile Engineering Course Lab in JavaScript",
+  "repository": "N/A",
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
+  "dependencies": {
+    "moment": "^2.19.3"
+  }
+}
