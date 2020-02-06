@@ -1,14 +1,10 @@
 var moment = require('moment');
 var Media = require('./Media');
+var { SECONDS_IN_A_MINUTE } = require('../src/constants')
 
 function Disc() {
-  this.labelHeight = function () {
-    return 3;
-  };
-
-  this.labelWidth = function () {
-    return 20;
-  };
+  this.labelHeight = 3;
+  this.labelWidth = 20;
 
   Media.call(this);
 
@@ -23,9 +19,9 @@ function Disc() {
 
   function formatTime(minutes, seconds) {
     var result = '';
-    if (minutes >= 60) {
-      result = Math.floor(minutes / 60) + ':';
-      minutes %= 60;
+    if (minutes >= SECONDS_IN_A_MINUTE) {
+      result = Math.floor(minutes / SECONDS_IN_A_MINUTE) + ':';
+      minutes %= SECONDS_IN_A_MINUTE;
     }
     if (minutes < 10) {result += '0';}
     result += minutes + ':';
@@ -35,8 +31,8 @@ function Disc() {
   }
 
   this.createLabel = function (title, recordingDate, durationMinutes, durationSeconds) {
-    var label = new Array(this.labelHeight());
-    label[0] = this.fitTitleTo(title, this.labelWidth());
+    var label = new Array(this.labelHeight);
+    label[0] = this.fitTitleTo(title, this.labelWidth);
     label[1] = dateInLongForm(recordingDate);
     label[2] = 'Duration ' + formatTime(durationMinutes, durationSeconds);
     return label;

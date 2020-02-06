@@ -1,13 +1,10 @@
 var Media = require('./Media');
+var { TITLE_FIT_TO_LENGTH } = require('../src/constants')
 
 function AudioTape() {
-  this.labelHeight = function () {
-    return 2;
-  };
+  this.labelHeight = 2;
 
-  this.labelWidth = function () {
-    return 25;
-  };
+  this.labelWidth = 25;
 
   Media.call(this);
 
@@ -15,9 +12,9 @@ function AudioTape() {
     return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   }
 
-  this.makeLabel = function (title, recorder, recordingDate, durationMinutes, durationSeconds, startAtMinutes, startAtSeconds) {
-    var label = new Array(this.labelHeight());
-    label[0] = this.fitTitleTo(title, 15) + ' ' + this.dateInTenDigitFormat(recordingDate);
+  this.makeLabel = function (title, recordingDate, durationMinutes, durationSeconds, startAtMinutes, startAtSeconds) {
+    var label = new Array(this.labelHeight);
+    label[0] = this.fitTitleTo(title, TITLE_FIT_TO_LENGTH) + ' ' + this.dateInTenDigitFormat(recordingDate);
     label[1] = 'Start' + formatTime(startAtMinutes, startAtSeconds) + ' dur' + formatTime(durationMinutes, durationSeconds);
     return label;
   };
